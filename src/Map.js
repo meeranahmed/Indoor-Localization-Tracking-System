@@ -9,7 +9,7 @@ import { useState, useEffect } from 'react';
 const Localization =() =>{
 
 
-    let labelURL ='https://run.mocky.io/v3/7a80eabd-3081-4caa-ba49-02e4ed8a773b';
+    let labelURL ='https://run.mocky.io/v3/e8bf675e-a564-4113-baf4-ca209a108f7e';
     let [label , setLabel] = useState([]);
     let coordinates = [
         [0 , 0] ,//intial position
@@ -24,7 +24,7 @@ const Localization =() =>{
         fetch(labelURL)
         .then((response) => response.json()) // get response, convert to json
         .then((json) => {
-            setLabel(json.label);
+            setLabel(json);
            
         })
         .catch((error) => alert(error)) // display errors
@@ -33,8 +33,8 @@ const Localization =() =>{
     
    
 
-    // console.log("label" , label);
-    console.log(coordinates[label][1]);
+    console.log(label);
+    //console.log(coordinates[label][1]);
 
     
 
@@ -62,8 +62,8 @@ const Localization =() =>{
                 height: 10,
                 borderRadius: 10 / 2,
                 backgroundColor: "red",
-                left: coordinates[2][0],
-                top: coordinates[2][1],
+                left: coordinates[label][0],
+                top: coordinates[label][1],
                 
             }} />
             
