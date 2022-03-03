@@ -13,17 +13,18 @@ const Localization =() =>{
     let [label , setLabel] = useState(0);
     let coordinates = [
         [0 , 0] ,//intial position
-        [250, 200], //lecture
-        [80, 360], //right corridor
-        [290,360],//left corridor
-        [250 , 325], //Embedded lab  
-        [130 , 480], //Network lab 
+        [190, 450], //1st labs corridor
         [130 , 520], //Electronics lab 
-        [130, 410], //TAS office
+        [250 , 325], //Embedded lab 
+        [190, 250], //lecture corridor
+        [250, 200], //lecture
         [180, 150], //om ahmed
         [190, 650], //2st labs corridor
-        [190, 450], //1st labs corridor
-        [190, 250], //lecture corridor
+
+        [80, 360], //right corridor
+        [290,360],//left corridor 
+        [130 , 480], //Network lab   
+        [130, 410], //TAS office    
         [180, 350], //asensar corridor
       ];
     
@@ -81,8 +82,8 @@ const Localization =() =>{
                 borderRadius: 10 / 2,
                 backgroundColor: "blue",
                 opacity:0.7,
-                left: coordinates[label][0],
-                top: coordinates[label][1],
+                left: coordinates[7][0],
+                top: coordinates[7][1],
                 
             }} />
             
