@@ -20,6 +20,11 @@ const Localization =() =>{
         [130 , 480], //Network lab 
         [130 , 520], //Electronics lab 
         [130, 410], //TAS office
+        [180, 150], //om ahmed
+        [190, 650], //2st labs corridor
+        [190, 450], //1st labs corridor
+        [190, 250], //lecture corridor
+        [180, 350], //asensar corridor
       ];
     
      let [sec, setSec] = useState(0);
