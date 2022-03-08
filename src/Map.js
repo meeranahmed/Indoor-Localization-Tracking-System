@@ -9,23 +9,24 @@ import { useState, useEffect } from 'react';
 const Localization =() =>{
 
 
-    let labelURL ='https://run.mocky.io/v3/e8bf675e-a564-4113-baf4-ca209a108f7e';
+    let labelURL ='https://run.mocky.io/v3/24ce8e40-5e29-46ea-b78a-22eeedd6d0e0';
+
     let [label , setLabel] = useState(0);
     let coordinates = [
         [0 , 0] ,//intial position
+        [130 , 520], //Electronics lab
         [190, 450], //1st labs corridor
-        [130 , 520], //Electronics lab 
-        [250 , 325], //Embedded lab 
         [190, 250], //lecture corridor
+        [130, 410], //TAS office
+        [190, 650], //2st labs corridor
+        
+        
+        [250 , 325], //Embedded lab       
         [250, 200], //lecture
         [180, 150], //om ahmed
-        [190, 650], //2st labs corridor
-
         [80, 360], //right corridor
         [290,360],//left corridor 
         [130 , 480], //Network lab   
-        [130, 410], //TAS office    
-        [180, 350], //asensar corridor
       ];
     
      let [sec, setSec] = useState(0);
@@ -42,8 +43,8 @@ const Localization =() =>{
         .then((response) => response.json()) // get response, convert to json
         .then((json) => {
             console.log(json)
-            setLabel(json);
-            console.log("label", label);
+            setLabel(json.value);
+            // console.log("label", label);
         })
         .catch((error) => alert(error)) // display errors
     }, [sec]);
@@ -82,8 +83,8 @@ const Localization =() =>{
                 borderRadius: 10 / 2,
                 backgroundColor: "blue",
                 opacity:0.7,
-                left: coordinates[7][0],
-                top: coordinates[7][1],
+                left: coordinates[label][0],
+                top: coordinates[label][1],
                 
             }} />
             
