@@ -68,6 +68,11 @@ const Localization =() =>{
              
             source={require('../assets/floor.jpg')}
             style = {{
+                display:"flex",
+                justifyContent:"center",
+                alignItems:"center",
+                width:300,
+                height:700,
                 position: 'absolute',
                 top: 80,
                 left: 35,
