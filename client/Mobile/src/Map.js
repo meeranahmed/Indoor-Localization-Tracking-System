@@ -1,6 +1,7 @@
 import React from "react";
-import { Text, View ,StyleSheet, Image } from "react-native";
+import { Text, View ,StyleSheet, Image,Button } from "react-native";
 import { useState, useEffect } from 'react';
+
 
 
 
@@ -8,10 +9,11 @@ import { useState, useEffect } from 'react';
 
 const Localization =() =>{
 
-
+    let replaylabels=[5,5,3,4,1,5,2,3,4,5,1,2,0,1,4,5,1,2,3,4,2,1,3,4,2,1,5]
     let labelURL ='https://run.mocky.io/v3/24ce8e40-5e29-46ea-b78a-22eeedd6d0e0';
 
     let [label , setLabel] = useState(0);
+    let [replayLabel , setreplayLabel] = useState(0);
     let coordinates = [
         [0 , 0] ,//intial position
         [130 , 520], //Electronics lab
@@ -33,27 +35,41 @@ const Localization =() =>{
     
     setInterval(() =>{
         setSec(sec = sec+1)
-      }, 5000)
+      }, 10000)
 
 
-    useEffect(() => {
-        console.log("label", label);
+    // useEffect(() => {
+    //     console.log("label", label);
 
-        fetch(labelURL)
-        .then((response) => response.json()) // get response, convert to json
-        .then((json) => {
-            console.log(json)
-            setLabel(json.value);
-            // console.log("label", label);
-        })
-        .catch((error) => alert(error)) // display errors
-    }, [sec]);
+    //     fetch(labelURL)
+    //     .then((response) => response.json()) // get response, convert to json
+    //     .then((json) => {
+    //         console.log(json)
+    //         setLabel(json.value);
+    //         // console.log("label", label);
+    //     })
+    //     .catch((error) => alert(error)) // display errors
+    // }, [sec]);
     
     
    
 
-    console.log(label);
+    //console.log(label);
     //console.log(coordinates[label][1]);
+   const timer =ms => new Promise(res => setTimeout(res,ms))
+   let rpval
+    async function replay(){
+        for(let i=0;i<replaylabels.length;i++){
+            
+            rpval = replaylabels[i]
+            await timer(2000)
+            console.log(replaylabels[i])
+            setreplayLabel(replaylabels[i])
+
+            
+        }
+    }
+    
 
     
 
@@ -92,7 +108,19 @@ const Localization =() =>{
                 top: coordinates[label][1],
                 
             }} />
+            <Button onPress={replay} title="replay"  />
             
+            <View style={{
+                position: 'absolute',
+                width: 10,
+                height: 10,
+                borderRadius: 10 / 2,
+                backgroundColor: "red",
+                opacity:0.7,
+                left: coordinates[replayLabel][0],
+                top: coordinates[replayLabel][1],
+                
+            }} />
 
         </View>
     );
